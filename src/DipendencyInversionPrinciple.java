@@ -1,6 +1,3 @@
-public class DipendencyInversionPrinciple {
-}
-
 class operationItems {
     OpProfile profile = new OpProfile();
     OpSurgoen surgoen = new OpSurgoen();
@@ -57,12 +54,12 @@ class OpSurgoen1 implements OpItemes {
     }
 }
 
-class TestDIP {
+public class DipendencyInversionPrinciple {
 
 
     public static void main(String[] args) {
-        OpProfile1 profile = new OpProfile1();
-        OpSurgoen1 surgoen = new OpSurgoen1();
+        OpItemes profile = new OpProfile1();
+        OpItemes surgoen = new OpSurgoen1();
         operationProfile1 operationProfile1 = new operationProfile1();
 
         operationProfile1.makeOpProfileCombination(profile);
