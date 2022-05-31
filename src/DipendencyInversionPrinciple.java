@@ -34,7 +34,7 @@ class operationProfile1 {
 
 class OpProfile1 implements OpItemes {
     public void addProfile() {
-//todo method
+        //todo method
     }
 
     @Override
@@ -45,7 +45,7 @@ class OpProfile1 implements OpItemes {
 
 class OpSurgoen1 implements OpItemes {
     public void addSurgeon() {
-//todo method
+        //todo method
     }
 
     @Override
@@ -55,7 +55,6 @@ class OpSurgoen1 implements OpItemes {
 }
 
 public class DipendencyInversionPrinciple {
-
 
     public static void main(String[] args) {
         OpItemes profile = new OpProfile1();
