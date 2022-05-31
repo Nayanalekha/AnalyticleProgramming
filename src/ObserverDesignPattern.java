@@ -4,31 +4,31 @@ import java.util.List;
 class OperationCenter {
 
     private List<Observer> observers = new ArrayList<Observer>();
-    private int state;
+    private int roomID;
 
-    public int getState() {
-        return state;
+    public int getRoomID() {
+        return roomID;
     }
 
-    public void setState(int state) {
-        this.state = state;
-        notifyAllObservers();
+    public void setRoomID(int roomID) {
+        this.roomID = roomID;
+        notifyAllObservers(roomID);
     }
 
     public void attach(Observer observer){
         observers.add(observer);
     }
 
-    public void notifyAllObservers(){
+    public void notifyAllObservers(int roomID){
         for (Observer observer : observers) {
-            observer.update();
+            observer.update(roomID);
         }
     }
 }
 
  abstract class Observer {
     protected OperationCenter observerble;
-    public abstract void update();
+    public abstract void update(int room);
 }
 
 class operationOverview extends Observer{
@@ -39,8 +39,8 @@ class operationOverview extends Observer{
     }
 
     @Override
-    public void update() {
-        System.out.println( "Update operation overview screen " );
+    public void update(int room) {
+        System.out.println( "Update operation overview screen with new room ID " + room );
     }
 }
 
@@ -52,19 +52,19 @@ class operationMonitoring extends Observer{
     }
 
     @Override
-    public void update() {
-        System.out.println( "Update operation monitoring screen " );
+    public void update(int room) {
+        System.out.println( "Update operation monitoring screen with room " + room);
     }
 }
 
-public class EventSource {
+public class ObserverDesignPattern {
 
     public static void main(String args[]){
         OperationCenter OperationCenter = new OperationCenter();
 
         new operationOverview(OperationCenter);
         new operationMonitoring(OperationCenter);
-        OperationCenter.setState(15);
-        OperationCenter.setState(7);
+        OperationCenter.setRoomID(15);
+        OperationCenter.setRoomID(7);
     }
-}// End of the Eventsource class.
+}
