@@ -1,7 +1,3 @@
-import java.util.Date;
-
-public class SingleResponsibility {
-}
 
 class Profile{
 
@@ -19,9 +15,9 @@ interface ProfilesBuilder {
     void reSet();
 }
 
-class ProfileBuilder implements ProfilesBuilder{
+class Builder implements ProfilesBuilder{
     Profile profile;
-    ProfileBuilder(){
+    Builder(){
         reSet();
     }
     @Override
@@ -56,7 +52,7 @@ class ProfileBuilder implements ProfilesBuilder{
     }
 }
 
-class Builder{
+class Director {
     private ProfilesBuilder builder;
 
     void setBuilder(ProfilesBuilder builder){
@@ -80,12 +76,12 @@ class Builder{
     }
 }
 
-class ProfileCreator{
+public class BuilderDesignPattern {
     public static void main(String args[]){
-        Builder builder = new Builder();
+        Director director = new Director();
 
-        ProfileBuilder profileBuilder = new ProfileBuilder();
-        builder.makeSurgeonProfile(profileBuilder);
-        Profile surgeonProfile = profileBuilder.getProfile();
+        Builder builder = new Builder();
+        director.makeSurgeonProfile(builder);
+        Profile surgeonProfile = builder.getProfile();
     }
 }
